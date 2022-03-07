@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="index-box">
+    <h1 class="title" id="myID"></h1>
+    <h4 class="title">Recommends (12)</h4>
+    <div class="row" id="listRecommends">
+<!--        <div class="col-sm-3">-->
+<!--            {% include 'components/cardRecommends.html' %}-->
+<!--        </div>-->
+    </div>
+    <h4 class="title">Followings (12)</h4>
+    <div class="row">
+        <div class="col-sm-3">
+            {% include 'components/cardFollowings.html' %}
+        </div>
+    </div>
+    <h4 class="title">Followers (12)</h4>
+    <div class="row">
+        <div class="col-sm-3">
+            {% include 'components/cardFollowers.html' %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
