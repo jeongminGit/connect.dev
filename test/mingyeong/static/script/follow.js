@@ -10,7 +10,8 @@ function follow() {
                 },
         success: function (response) {
             alert(response['msg']);
-
+            $('#recommendsCard').remove()
+            location.reload();
         }
     })
 }

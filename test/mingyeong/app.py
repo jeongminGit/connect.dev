@@ -19,16 +19,19 @@ def myID():
     return jsonify({'myID': myID})
 
 @app.route('/followCheck', methods=['GET'])
-def recommendList():
+def followCheck():
     recommendList = list(db.follows.find({}, {'_id': False}))
-    print(recommendList)
-    return jsonify({'recommendList': recommendList})
+    userList = list(db.users.find({}, {'_id': False}))
+    return jsonify({'recommendList': recommendList, 'userList': userList})
 
 # @app.route('/recommendList', methods=['GET'])
 # def recommendList():
 #     listID = list(db.users.find({}, {'_id': False}))
 #     print(listID)
 #     return jsonify({'listID': listID})
+
+
+
 
 @app.route('/follow', methods=['POST'])
 def follow():
