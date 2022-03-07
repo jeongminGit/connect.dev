@@ -24,23 +24,14 @@ def followCheck():
     userList = list(db.users.find({}, {'_id': False}))
     return jsonify({'recommendList': recommendList, 'userList': userList})
 
-# @app.route('/recommendList', methods=['GET'])
-# def recommendList():
-#     listID = list(db.users.find({}, {'_id': False}))
-#     print(listID)
-#     return jsonify({'listID': listID})
-
-
-
 
 @app.route('/follow', methods=['POST'])
 def follow():
    myID = request.form['myID']
    followingID = request.form['followingID']
-   print(myID, followingID)
    follow = {'user_id': myID, 'following_id': followingID}
    db.follows.insert_one(follow)
-   return jsonify({'result':'success', 'msg': followingID + '를 팔로우했습니다.'})
+   return jsonify({'result':'success', 'msg': '팔로우했습니다.'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=8000, debug=True)

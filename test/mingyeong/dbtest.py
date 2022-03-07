@@ -9,7 +9,7 @@ db = client.Test
 # myId_receive = db.users.find_one()['_id']
 # print(myId_receive)
 
-doc = {'name':'아하잉','id':'didkfad'}
+doc = {'name':'졸리다','id':'sleepy'}
 db.users.insert_one(doc)
 
 # doc = {'user_id':'snoopso','following_id':'mingyeongso'}

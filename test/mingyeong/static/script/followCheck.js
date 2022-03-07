@@ -1,6 +1,6 @@
 function followCheck() {
-    let myID = $("#myID").text();
-    // console.log(myID)
+    // myID 수정 필요함
+    let myID = "snoopso"
 
     $.ajax({
         type: "GET",
@@ -28,10 +28,9 @@ function followCheck() {
             }
             let followID = userIDList.filter(x => !followingList.includes(x))
 
-
             // 3. 자기 자신일 경우 제외하고 RecommendsUserIDList Array 값 넣어주기
             for (let i = 0; i < followID.length; i++) {
-                if (followID[i] !== 'snoopso') {
+                if (followID[i] !== myID) {
                     RecommendsUserIDList.push(followID[i]);
                 }
             }
