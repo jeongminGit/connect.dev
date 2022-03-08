@@ -9,7 +9,11 @@ db = client.Test
 # myId_receive = db.users.find_one()['_id']
 # print(myId_receive)
 
+<<<<<<< HEAD
 doc = {'name':'졸리다','id':'sleepy'}
+=======
+doc = {'name':'야호야호','id':'hoya'}
+>>>>>>> parent of f7d03ba (feat: follow 기능 구현 완료, follow 하지 않은 사람들 추천 기능 구현 완료)
 db.users.insert_one(doc)
 
 # doc = {'user_id':'snoopso','following_id':'mingyeongso'}

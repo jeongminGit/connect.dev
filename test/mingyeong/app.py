@@ -19,11 +19,19 @@ def myID():
     return jsonify({'myID': myID})
 
 @app.route('/followCheck', methods=['GET'])
-def followCheck():
+def recommendList():
     recommendList = list(db.follows.find({}, {'_id': False}))
-    userList = list(db.users.find({}, {'_id': False}))
-    return jsonify({'recommendList': recommendList, 'userList': userList})
+    print(recommendList)
+    return jsonify({'recommendList': recommendList})
 
+<<<<<<< HEAD
+=======
+# @app.route('/recommendList', methods=['GET'])
+# def recommendList():
+#     listID = list(db.users.find({}, {'_id': False}))
+#     print(listID)
+#     return jsonify({'listID': listID})
+>>>>>>> parent of f7d03ba (feat: follow 기능 구현 완료, follow 하지 않은 사람들 추천 기능 구현 완료)
 
 @app.route('/follow', methods=['POST'])
 def follow():
