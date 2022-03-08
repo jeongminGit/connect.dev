@@ -33,6 +33,13 @@ def followCheck2():
     userList = list(db.users.find({}, {'_id': False}))
     return jsonify({'recommendList': recommendList, 'userList': userList})
 
+# 내가 팔로우한 유저 숫자 가져오기
+@app.route('/followingNum', methods=['GET'])
+def followingNum():
+    recommendList = list(db.follows.find({}, {'_id': False}))
+    userList = list(db.users.find({}, {'_id': False}))
+    return jsonify({'recommendList': recommendList, 'userList': userList})
+
 # 팔로우 기능 실행
 @app.route('/follow', methods=['POST'])
 def follow():
