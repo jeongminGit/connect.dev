@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
+
+        <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+        <title>connect.dev</title>
+
+        <style>
+            * {
+            font-family: 'Jua', sans-serif;
+            }
+            .main {
+                width: 100%;
+                height: 1000px;
+
+                background: #18191C;
+            }
+            .logo_connect_dev {
+                background-color: transparent;
+                position: static;
+                width: 109px;
+                height: 26px;
+                margin-left: 50px;
+                margin-top: 37px;
+
+                line-height: 145%;
+
+                text-align: center;
+
+                color: #FFFFFF;
+            }
+            .profile {
+                position: static;
+                width: 690px;
+                height: 700px;
+                margin: auto;
+
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                box-sizing: border-box;
+                border-radius: 8px;
+
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .introduce{
+                position: static;
+                width: 80px;
+                height: 16px;
+                margin: 20px 20px;
+
+                font-size: 14px;
+                line-height: 16px;
+
+                color: #FFFFFF;
+            }
+            .inputname {
+                width: 563px;
+                height: 37px;
+                margin-left: 60px;
+                padding: 12px;
+
+                font-size: 11px;
+                line-height: 13px;
+
+                color: #FFFFFF;
+
+                opacity: 0.5;
+
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                box-sizing: border-box;
+                border-radius: 8px;
+            }
+            .inputjob {
+                width: 563px;
+                height: 37px;
+                margin-top: 20px;
+                margin-left: 60px;
+                padding: 12px;
+
+                font-size: 11px;
+                line-height: 13px;
+
+                color: #FFFFFF;
+
+                opacity: 0.5;
+
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                box-sizing: border-box;
+                border-radius: 8px;
+            }
+            .inputcomment {
+                width: 563px;
+                height: 113px;
+                margin-top: 20px;
+                margin-left: 60px;
+                padding: 12px;
+
+                font-size: 11px;
+                line-height: 13px;
+
+                color: #FFFFFF;
+
+                opacity: 0.5;
+
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                box-sizing: border-box;
+                border-radius: 8px;
+            }
+            .profile_stack {
+                width: 80px;
+                height: 16px;
+                margin: 20px 20px;
+
+                font-size: 14px;
+                line-height: 16px;
+
+                color: #FFFFFF;
+            }
+            .profile_stacks {
+                width: 70px;
+                height: 30px;
+                margin-top: 20px;
+                margin-left: 60px;
+                padding: 2px;
+
+                font-size: 14px;
+                line-height: 13px;
+
+                color: #FFFFFF;
+
+                background: rgba(255, 255, 255, 0.12);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                box-sizing: border-box;
+                border-radius: 100px;
+            }
+            .profile_url {
+                width: 40px;
+                height: 16px;
+                margin: 20px 20px;
+
+                font-size: 14px;
+                line-height: 16px;
+
+                color: #FFFFFF;
+            }
+            .input_url {
+                width: 563px;
+                height: 40px;
+                margin-left: 60px;
+                margin-top: 20px;
+                padding: 12px;
+
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                box-sizing: border-box;
+                border-radius: 8px;
+
+                font-size: 11px;
+                line-height: 13px;
+
+                color: #FFFFFF;
+
+                flex: none;
+                order: 0;
+                align-self: stretch;
+                flex-grow: 0;
+            }
+            .profile_complete {
+                width: 148px;
+                height: 38px;
+                margin-top: 20px;
+                margin-left: 265px;
+                padding: 12px;
+
+                font-size: 12px;
+                line-height: 14px;
+
+                color: #FFFFFF;
+
+                background: #7D24CF;
+                border-radius: 100px;
+            }
+        </style>
+        <script>
+            function main() {
+            }
+            function reack() {
+                let stack1 = 1
+                alert('React 선택')
+                // console.log(stack1)
+                return num=stack1
+
+            }
+            function node() {
+                let stack2 = 2
+                alert('Node.js 선택')
+                // console.log(stack2)
+                return num=stack2
+            }
+            function spring() {
+                let stack3 = 3
+                alert('Spring 선택')
+                // console.log(stack3)
+                return num=stack3
+            }
+            function complete() {
+                let name = $('#name').val()
+                let job = $('#job').val()
+                let comment = $('#comment').val()
+                let url1 = $('#url1').val()
+                let url2 = $('#url2').val()
+                let url3 = $('#url3').val()
+                console.log(num,name,job,comment,url1,url2,url3)
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/connect_dev',
+                    data: {num_give: num,name_give: name,job_give:job,comment_give:comment,url1_give: url1, url2_give: url2, url3_give: url3},
+                    success: function (response) {
+                        alert(response['msg'])
+                        window.location.reload()
+                    }
+                });
+            }
+
+
+
+
+        </script>
+    </head>
+    <body>
+        <div class="main">
+            <button class="logo_connect_dev" onclick="main()">connect.dev</button>
+            <div class="profile">
+                <h1 class="introduce">자기소개</h1>
+                    <input id="name" class="inputname" type="text" placeholder="이름을 입력하세요" >
+                    <input id="job" class="inputjob" type="text" placeholder="직무명을 입력하세요" >
+                    <input id="comment" class="inputcomment" type="text" placeholder="소개글을 입력하세요" >
+                <h2 class="profile_stack">기술 스택</h2>
+                    <button class="profile_stacks" onclick="reack()">Reack</button>
+                    <button class="profile_stacks" onclick="node()">Node.js</button>
+                    <button class="profile_stacks" onclick="spring()">Spring</button>
+                <h2 class="profile_url">링크</h2>
+                    <input id="url1" class="input_url" type="text" placeholder="url링크" >
+                    <input id="url2" class="input_url" type="text" placeholder="url링크" >
+                    <input id="url3" class="input_url" type="text" placeholder="url링크" >
+                <button class="profile_complete" onclick="complete()">등록 완료</button>
+            </div>
+        </div>
+    </body>
+</html>
