@@ -11,9 +11,16 @@ db = client.connect_dev
 
 @app.route('/')
 def home():
-    return render_template('profile.html')
+    return render_template('profilemain.html')
 
-# mkprofile.html용
+# profilemain.html용
+@app.route("/connect_dev/profile", methods=["GET"])
+def profile_upload():
+    profile = list(db.users.find({}, {'_id': False}))
+    return jsonify({'profiling': profile})
+
+
+# profile.html용
 @app.route("/connect_dev", methods=["POST"])
 def profile_post():
     url1_receive = request.form['url1_give']
@@ -28,12 +35,12 @@ def profile_post():
         'name':name_receive,
         'job':job_receive,
         'comment':comment_receive,
-        'num': num_receive,
+        'num': int(num_receive),
         'url1': url1_receive,
         'url2': url2_receive,
         'url3': url3_receive,
     }
-    db.user.insert_one(doc)
+    db.users.insert_one(doc)
 
     return jsonify({'msg':'저장완료!'})
 
