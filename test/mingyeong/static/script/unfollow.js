@@ -1,5 +1,5 @@
 function unfollow() {
-    let myID = $( "#myID" ).text();
+    let myID = 'snoopso';
     let followingID = $( "#followingUserID" ).text();
     $.ajax({
         type: "POST",

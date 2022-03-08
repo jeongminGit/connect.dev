@@ -12,6 +12,10 @@ headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/
 def home():
     return render_template('index.html')
 
+@app.route('/myFollowing')
+def myfollowing():
+    return render_template('following.html')
+
 # 나의 ID를 불러오기
 @app.route('/myID', methods=['GET'])
 def myID():
