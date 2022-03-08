@@ -1,6 +1,6 @@
 function followCheck() {
     // myID 수정 필요함
-    let myID = "snoopso"
+    let myID = "snoopso";
 
     $.ajax({
         type: "GET",
@@ -40,7 +40,7 @@ function followCheck() {
                 var returnValue = userList.find(function (data) {
                     return data.id == RecommendsUserIDList[i]
                 });
-                console.log(returnValue['id'],returnValue['name']);
+                console.log(returnValue['id'], returnValue['name']);
                 let temp_html = `<div class="col-sm-3">
                                       <div class="card text-white bg-dark mb-3" id="recommendsCard">
                                           <div class="card-body">
@@ -50,9 +50,9 @@ function followCheck() {
                                           </div>
                                       </div>
                                   </div>`;
-                    $('#listRecommends').append(temp_html);
+                $('#listRecommends').append(temp_html);
 
             }
         }
     })
-};
+}
