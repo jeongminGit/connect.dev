@@ -31,6 +31,9 @@ def recommendList():
 #     listID = list(db.users.find({}, {'_id': False}))
 #     print(listID)
 #     return jsonify({'listID': listID})
+<<<<<<< HEAD
+>>>>>>> parent of f7d03ba (feat: follow 기능 구현 완료, follow 하지 않은 사람들 추천 기능 구현 완료)
+=======
 >>>>>>> parent of f7d03ba (feat: follow 기능 구현 완료, follow 하지 않은 사람들 추천 기능 구현 완료)
 
 @app.route('/follow', methods=['POST'])
