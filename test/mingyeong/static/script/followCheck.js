@@ -51,7 +51,6 @@ function followCheck() {
                                       </div>
                                   </div>`;
                     $('#listRecommends').append(temp_html);
-
             }
         }
     })
