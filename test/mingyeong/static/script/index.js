@@ -3,4 +3,5 @@ $(document).ready(function () {
     followCheck();
     followCheck2();
     followingNum();
+    followerNum();
 })
