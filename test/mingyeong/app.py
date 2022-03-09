@@ -58,7 +58,7 @@ def follow():
    followingID = request.form['followingID']
    follow = {'user_id': myID, 'following_id': followingID}
    db.follows.insert_one(follow)
-   return jsonify({'result':'success', 'msg': '팔로우했습니다.'})
+   return jsonify({'result':'success', 'msg': followingID + '를 언팔로우했습니다.'})
 
 # 언팔로우 기능 실행
 @app.route('/unfollow', methods=['POST'])
@@ -67,7 +67,7 @@ def unfollow():
    followingID = request.form['followingID']
    unfollow = {'user_id': myID, 'following_id': followingID}
    db.follows.delete_one(unfollow)
-   return jsonify({'result':'success', 'msg': '언팔로우했습니다.'})
+   return jsonify({'result':'success', 'msg': followingID + '를 언팔로우했습니다.'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=8000, debug=True)

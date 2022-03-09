@@ -1,6 +1,5 @@
-function follow() {
+function follow(followingID) {
     let myID = $( "#myID" ).text();
-    let followingID = $( "#recommendUserID" ).text();
     $.ajax({
         type: "POST",
         url: "/follow",

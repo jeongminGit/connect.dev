@@ -41,7 +41,7 @@ function followCheck2() {
                                         <div class="card-body">
                                             <h5 class="card-title" id="followingUserID">${returnValue['id']}</h5>
                                             <p class="card-text">${returnValue['name']}</p>
-                                            <a href="#" class="btn btn-outline-primary" onclick="unfollow()">언팔로우</a>
+                                            <a href="#" class="btn btn-outline-primary" onclick="unfollow(this.id)" id="${returnValue['id']}">언팔로우</a>
                                         </div>
                                     </div>
                                 </div>`;
