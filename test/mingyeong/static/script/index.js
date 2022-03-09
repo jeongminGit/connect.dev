@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    changeID();
+    // changeID();
     followCheck();
     followCheck2();
     followingNum();

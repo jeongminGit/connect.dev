@@ -39,9 +39,12 @@ function followCheck2() {
                 let temp_html = `<div class="col-sm-3">
                                     <div class="card text-white bg-dark mb-3" id="followingsCard">
                                         <div class="card-body">
-                                            <h5 class="card-title" id="followingUserID">${returnValue['id']}</h5>
-                                            <p class="card-text">${returnValue['name']}</p>
-                                            <a href="#" class="btn btn-outline-primary" onclick="unfollow(this.id)" id="${returnValue['id']}">언팔로우</a>
+                                            <h5 class="card-title" id="followingUserID">${returnValue['name']}</h5>
+                                            <p class="card-text">${returnValue['job']}</p>
+                                            <p class="badge">${returnValue['num']}</p>
+                                            <div class="d-grid gap-2">
+                                                <a href="#" class="btn btn-outline-primary" onclick="unfollow(this.id)" id="${returnValue['id']}">언팔로우</a>
+                                            <div>
                                         </div>
                                     </div>
                                 </div>`;
