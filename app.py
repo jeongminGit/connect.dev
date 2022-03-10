@@ -1,35 +1,33 @@
-
-
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import certifi
 from pymongo import MongoClient
-app = Flask(__name__)
 
 ca = certifi.where()
 client = MongoClient("mongodb+srv://connect_dev:ukdzr1Y72Jilh3N0@cluster0.tgb50.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", tlsCAFile=ca)
 db = client.connect_dev
+app = Flask(__name__)
+headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+
 
 
 # 문영안
 
-@app.route('/')
-def home():
-   return render_template('index.html')
+
+
 
 @app.route('/test', methods=['GET'])
 def test_get():
    user_list = list(db.users.find({},{'_id':False}))
    return jsonify({'moons': user_list})
 
+
+
 # 신상렬
 
 # 메인 프로필화면 출력
 @app.route('/profile')
 def profile_main():
-
     return render_template('profile_main.html')
-
-
 
 # 메인 프로필 화면에 DB정보 출력
 @app.route("/profile_main", methods=["GET"])
@@ -178,17 +176,27 @@ import hashlib
 #################################
 ##  HTML을 주는 부분             ##
 #################################
+
+@app.route('/')
+def home():
+   return render_template('index.html')
+
 @app.route('/a')
 def a():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.users.find_one({"id": payload['id']})
-        return render_template('login.html', nickname=user_info["id"])
+        return render_template('index.html', nickname=user_info["id"])
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="환영합니다."))
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
+
+
+@app.route('/profileEach')
+def profileEach():
+    return render_template('profile_each.html', id=request.args.get('id'))
 
 
 # @app.route('/login')
@@ -197,7 +205,7 @@ def a():
 #     return render_template('login.html', msg=msg)
 
 @app.route('/login1')
-def login1():
+def login():
     return render_template('login.html')
 
 @app.route('/register')
@@ -205,9 +213,9 @@ def register():
     return render_template('register.html')
 
 
-@app.route('/profile')
-def profile():
-    return render_template('profile.html')
+# @app.route('/profile')
+# def profile():
+#     return render_template('profile.html')
 
 
 #################################
@@ -246,7 +254,6 @@ def api_register():
     }
 
     db.users.insert_one(doc)
-
     return jsonify({'result': 'success'})
 
 
@@ -322,4 +329,4 @@ def check_dup():
 
 
 if __name__ == '__main__':
-   app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)

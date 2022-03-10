@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <body>
+    <header>
+        <div class="links">
+            <a href="/profile" class="link_text">내 프로필</a>
+            <a href="/profile" class="link_text">팔로우 리스트</a>
+            <a href="/" class="link_text">로그아웃</a>
+        </div>
+        <a class="logo" href="/">Connect_dev</a>
+    </header>
+    <main>
+        <div class="container">
+            <div class="introbox">
+                <button class="btn" onclick="location.href='/profile_revise'">수정하기</button>
+                <div class="name" id="name"></div>
+                <div class="job" id="job"></div>
+                <ul>
+                    <li class="follower">팔로워</li>
+                    <li class="following">팔로잉</li>
+                </ul>
+                <div class="comment" id="comment"></div>
+            </div>
+            <div class="stackbox">기술 스택
+                <div class="stack" id="num"></div>
+            </div>
+            <div class="linkbox">링크
+                <p id="url1"></p>
+            </div>
+        </div>
+    </main>
+    <script>
+        $(document).ready(function () {
+            {#profileLoading();#}
+        });
+    </script>
+
+{% endblock %}

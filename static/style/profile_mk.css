@@ -11,20 +11,20 @@ header {
     margin-left: 850px;
 }
 
-main {
-    background: #18191C;
-    min-height: 700px;
-}
+/*main {*/
+/*    background: #18191C;*/
+/*    min-height: 700px;*/
+/*}*/
 
-footer {
-    background: #18191C;
-    height: 100px;
-}
+/*footer {*/
+/*    background: #18191C;*/
+/*    height: 100px;*/
+/*}*/
 
-a {
-    text-decoration: none;
-    color: white;
-}
+/*a {*/
+/*    text-decoration: none;*/
+/*    color: white;*/
+/*}*/
 
 .container {
     width: 700px;
@@ -195,9 +195,9 @@ a {
     font-size: 30px;
 }
 
-li {
-    display: inline-block;
-}
+/*li {*/
+/*    display: inline-block;*/
+/*}*/
 
 .url1 {
     position: absolute;
@@ -256,17 +256,17 @@ li {
     border-radius: 8px;
 }
 
-.btn {
-    position: absolute;
-    width: 148px;
-    height: 38px;
-    margin-top: 280px;
-    margin-left: 170px;
+/*.btn {*/
+/*    position: absolute;*/
+/*    width: 148px;*/
+/*    height: 38px;*/
+/*    margin-top: 280px;*/
+/*    margin-left: 170px;*/
 
-    font-size: 20px;
-    line-height: 140%;
-    color: #FFFFFF;
+/*    font-size: 20px;*/
+/*    line-height: 140%;*/
+/*    color: #FFFFFF;*/
 
-    background: #7D24CF;
-    border-radius: 100px;
-}
+/*    background: #7D24CF;*/
+/*    border-radius: 100px;*/
+/*}*/

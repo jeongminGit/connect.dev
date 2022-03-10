@@ -21,62 +21,110 @@
     </div>
 </div>
 <script>
-    // 정규표현식
-    // 소괄호() : 필수 포함 사항 ex) (?=.*[~~~])
-    // 대괄호[] : 선택 사항
-    // 중괄호{} : 문자 길이 제한
-    function is_id(asValue) {
-        var regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
-        return regExp.test(asValue);
-    }
-
-    function is_pw(asValue) {
-        var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,20}$/;
-        return regExp.test(asValue);
-    }
-
-
-    // 아이디 중복확인
-    function check_dup() {
-        let userid = $("#userid").val()
-        console.log(userid)
-        // 아이디 입력 칸이 빈칸일 경우
-        if (userid == "") {
-            $("#help_id_alert").text("아이디를 입력해주세요.")
-            $("#userid").focus()
-            return;
-        }
-        // 아이디의 형식이 맞지 않은 경우
-        if (!is_id(userid)) {
-            $("#help_id_alert").text("아이디의 형식을 확인해주세요. 영문과 숫자, 일부 특수문자(._-) 사용 가능. 2-10자 길이")
-            $("#userid").focus()
-            return;
-        }
-        // 아이디 표준 정규 규칙 통과 후
-        // db에 중복된 아이디가 있는 검사
-        $("#help_id")
-        $.ajax({
-            type: "POST",
-            url: "/api/register/check_dup",
-            data: {
-                id_give: userid
-            },
-            success: function (response) {
-
-                // 중복된 아이디가 있는 경우
-                if (response["exists"]) {
-                    $("#help_id_alert").text("이미 존재하는 아이디입니다.")
-                    $("#userid").focus()
-                }
-                // 중복된 아이디가 없는 경우
-                else {
-                    $("#help_id_alert").hide()
-                }
-                $("#help_id")
-
+   // 정규표현식
+            // 소괄호() : 필수 포함 사항 ex) (?=.*[~~~])
+            // 대괄호[] : 선택 사항
+            // 중괄호{} : 문자 길이 제한
+            function is_id(asValue) {
+                var regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
+                return regExp.test(asValue);
             }
-        });
-    }
+
+            function is_pw(asValue) {
+                var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,20}$/;
+                return regExp.test(asValue);
+            }
+
+            // 아이디 중복확인
+            function check_dup() {
+                let userid = $("#userid").val()
+                console.log(userid)
+
+                // 아이디 입력 칸이 빈칸일 경우
+                if (userid == "") {
+                    $("#help_id_alert").text("아이디를 입력해주세요.").removeClass("success").addClass("danger")
+                    $("#userid").focus()
+                    return;
+                }
+                // 아이디의 형식이 맞지 않은 경우
+                if (!is_id(userid)) {
+                    $("#help_id_alert").text("아이디의 형식을 확인해주세요. 영문과 숫자, 일부 특수문자(._-) 사용 가능. 2-10자 길이").removeClass("success").addClass("danger")
+                    $("#userid").focus()
+                    return;
+                }
+                // 아이디 표준 정규 규칙 통과 후
+                // db에 중복된 아이디가 있는 검사
+                $("#help_id")
+                $.ajax({
+                    type: "POST",
+                    url: "/api/register/check_dup",
+                    data: {
+                        id_give: userid
+                    },
+                    success: function (response) {
+
+                        // 중복된 아이디가 있는 경우
+                        if (response["exists"]) {
+                            $("#help_id_alert").text("이미 존재하는 아이디입니다.").removeClass("success").addClass("danger")
+                            $("#userid").focus()
+                        }
+                        // 중복된 아이디가 없는 경우
+                       else {
+                            $("#help_id_alert").text("사용 가능한 아이디입니다.").addClass("success").removeClass("danger")
+                        }
+                        $("#help_id")
+
+                    }
+                });
+            }
+
+            // 아이디 가입하기
+            function register() {
+                let userid = $("#userid").val()
+                let userpw = $("#userpw").val()
+                let userpw2 = $("#userpw2").val()
+
+                if ($("#help_id_alert").hasClass("danger")) {
+                    alert("아이디를 다시 확인해주세요.")
+                    $("#userid").focus()
+                    return;
+                }
+                if (userpw == "") {
+                    $("#help_pw_alert").text("비밀번호를 입력해주세요.")
+                    $("#userpw").focus()
+                    return;
+                } else if (!is_pw(userpw)) {
+                    $("#help_pw_alert").text("비밀번호의 형식을 확인해주세요. 영문과 숫자 필수 포함, 특수문자(!@#$%^&*) 사용가능 8-20자")
+                    $("#userpw").focus()
+                    return
+                } else {
+                    $("#help_pw_alert").text("사용할 수 있는 비밀번호입니다.")
+                }
+                if (userpw2 == "") {
+                    $("#help_pw2_alert").text("비밀번호를 입력해주세요.")
+                    $("#userpw2").focus()
+                    return;
+                } else if (userpw2 != userpw) {
+                    $("#help_pw2_alert").text("비밀번호가 일치하지 않습니다.")
+                    $("#userpw2").focus()
+                    return;
+                } else {
+                    $("#userpw2").text("비밀번호가 일치합니다.")
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/api/register",
+                    data: {
+                        id_give: userid,
+                        pw_give: userpw
+                    },
+                    success: function () {
+                        alert("회원가입을 축하드립니다!")
+                        window.location.replace("/profile")
+                    }
+                })
+            }
+
 </script>
 
 <!--프로필 만들기 파트-->
@@ -98,8 +146,10 @@
         <input class="url1" id="url1" placeholder="url을 입력하세요">
         <input class="url2" id="url2" placeholder="url을 입력하세요">
         <input class="url3" id="url3" placeholder="url을 입력하세요">
-        <button class="btn" onclick="complete()">작성 완료</button>
+
     </div>
+    <button class="btn btn-primary" onclick="complete()">작성 완료</button>
+
 </div>
 <script>
     function react() {
@@ -171,8 +221,10 @@
                     url3_give: url3
                 },
                 success: function () {
-                    alert("회원가입을 축하드립니다!")
-                    window.location.replace("/login1")
+                    alert("회원가입을 축하드립니다!");
+                    window.location.replace("/");
+                    $('#beforeLoginNab').addClass('hide');
+                    $('#afterLoginNab').removeClass('hide');
                 }
             })
         } else {
