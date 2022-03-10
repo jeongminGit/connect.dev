@@ -1,5 +1,3 @@
-
-
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import certifi
 from pymongo import MongoClient
@@ -12,8 +10,8 @@ db = client.connect_dev
 
 # 문영안
 
-@app.route('/a')
-def aaaa():
+@app.route('/')
+def home():
    return render_template('index.html')
 
 @app.route('/test', methods=['GET'])
@@ -295,4 +293,4 @@ def api_valid():
 
 
 if __name__ == '__main__':
-   app.run('0.0.0.0', port=8000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
