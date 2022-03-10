@@ -12,8 +12,8 @@ db = client.connect_dev
 
 # 문영안
 
-@app.route('/a')
-def aaaa():
+@app.route('/')
+def home():
    return render_template('index.html')
 
 @app.route('/test', methods=['GET'])
@@ -170,6 +170,9 @@ def login():
     msg = request.args.get("msg")
     return render_template('login.html', msg=msg)
 
+@app.route('/login1')
+def login1():
+    return render_template('login.html')
 
 @app.route('/register')
 def register():
@@ -217,8 +220,6 @@ def api_register():
     }
 
     db.users.insert_one(doc)
-
-
 
     return jsonify({'result': 'success'})
 
