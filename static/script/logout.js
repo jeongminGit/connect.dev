@@ -4,5 +4,4 @@ function logout() {
     #("#beforeLoginNab").removeClass("hide");
     #("#afterLoginNab").addClass("hide");
     window.location.href = "/login1"
-
 }

@@ -31,57 +31,9 @@
 {#            </div>#}
         </div>
     </div>
-    <!--민경-->
-    <div class="row" id="listRecommends">
-    </div>
+    <a href="/login1" class="btn btn-primary">로그인</a>
+    <a href="/register" class="btn btn-primary">가입하기</a>
 </div>
 
-<script>
-        $(document).ready(function () {
-            listing();
-        });
-
-
-
-        function listing() {
-            $('#cards-box').empty()
-            $.ajax({
-                type: 'GET',
-                url: '/test',
-                data: {},
-                success: function (response) {
-                    let rows = response['moons']
-                    for (let i = 0; i < rows.length; i++) {
-                        let name = rows[i]['name']
-                        let job = rows[i]['job']
-                        let comment = rows[i]['comment']
-                        let num = rows[i]['num']
-                        let id = rows[i]['id']
-                        console.log(id)
-
-                        let temp_html = `<div class="col">
-                                            <a class="card h-100 cardBtn" onclick="profileEach(this.id)" id="${id}">
-                                                <div class="card-body">
-                                                    <h5 class="name">${name}</h5>
-                                                    <p class="job">${job}</p>
-                                                    <p class="mycommnt">${comment}</p>
-                                                    <div class="num">
-                                                        <button type="button" class="test">${num}</button>
-                                                    </div>
-
-                                                </div>
-                                            </a>
-                                        </div>`
-
-
-
-
-                        $('#cards-box').append(temp_html)
-                    }
-                }
-            });
-        }
-
-    </script>
 
 {% endblock %}

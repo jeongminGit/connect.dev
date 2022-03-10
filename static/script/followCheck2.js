@@ -1,12 +1,11 @@
 function followCheck2() {
-    // myID 수정 필요함
-    let myID = "snoopso"
 
     $.ajax({
         type: "GET",
         url: "/followCheck2",
         data: {},
         success: function (response) {
+            const myID = response['id']
             let recommendList = response['recommendList'];
             let userList = response['userList'];
             const followingList = [];

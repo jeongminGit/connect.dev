@@ -4,7 +4,10 @@
     <main>
         <div class="container">
             <div class="introbox">
-                <a href="#" class="btn btn-primary" onclick="follow(this.id)" id="${id}">팔로우</a>
+                <span id="followingBtn">
+                    <a href="#" class="btn btn-primary follow" onclick="follow(this.id)" id="">팔로우</a>
+                    <a href="#" class="btn btn-outline-primary unfollow hide" onclick="unfollow(this.id)" id="">언팔로우</a>
+                </span>
                 <div class="name" id="name"></div>
                 <div class="job" id="job"></div>
                 <ul>
@@ -22,98 +25,101 @@
         </div>
     </main>
     <script>
-        $(document).ready(function() {
-            profile_upload();
+        $(document).ready(function () {
+            $("#beforeLoginNab").addClass("hide");
+            $("#afterLoginNab").removeClass("hide");
             profile_up();
+
         });
 
-            function profile_upload() {
-                function profile_upload() {
-                    $.ajax({
-                        type: 'GET',
-                        url: '/profile_main',
-                        data: {},
-                        success: function (response) {
-                            let id = response['id']
-                            // console.log(id)
-                            profile_up(id)
-                        }
-                    })
-                }
+        {#현재 로그인한 아이디 값을 가져오기#}
 
+        {#function loginInfo() {#}
+        {#    $.ajax({#}
+        {#        type: 'GET',#}
+        {#        url: '/profile_main',#}
+        {#        data: {},#}
+        {#        success: function (response) {#}
+        {#            const myid = response['id']#}
+        {#        }#}
+        {#    })#}
+        {#}#}
 
-            }
             function follow(followingID) {
+                let myid = $('#myID').text()
+                console.log(myid)
                 $.ajax({
-                    type: 'GET',
-                    url: '/profile_main',
-                    data: {},
+                    type: "POST",
+                    url: "/follow",
+                    data: {
+                        myID: myid,
+                        followingID: followingID
+                    },
                     success: function (response) {
-                        let row = response['profiling'];
-                        let myid = response['id'];
+                        alert(response['msg']);
+                        $('#followingBtn > .follow').addClass('hide');
+                        $('#followingBtn > .unfollow').removeClass('hide');
                     }
                 })
-
-
-                {#$.ajax({#}
-                {#    type: "POST",#}
-                {#    url: "/follow",#}
-                {#    data: {#}
-                {#        myID: myid,#}
-                {#        followingID: followingID#}
-                {#    },#}
-                {#    success: function (response) {#}
-                {#        alert(response['msg']);#}
-                {#        $('#recommendsCard').remove()#}
-                {#        location.reload();#}
-                {#    }#}
             }
+
+
+            {#parameter 값을 불러와 해당 프로필의 내용을 추가하기#}
+
             function profile_up() {
+                var url_string = window.location.href;
+                var url = new URL(url_string);
+                var param = url.searchParams.get("id");
                 $.ajax({
                     type: 'GET',
-                    url: '/profile_main_up',
+                    url: "/profile_main_up",
+                    dataType: '',
                     data: {},
                     success: function (response) {
-                        const id="shinshin";
+                        const id = param;
                         let row = response['profiling']
-                        console.log(row)
+                        let follows = response['follows']['following_id']
+                        console.log(follows)
                         var returnValue = row.find(function (data) {
-                                return data.id == id
-                            });
-                            console.log(returnValue['name'],
-                                        returnValue['job'],
-                                        returnValue['num'],
-                                        returnValue['comment'],
-                                        returnValue['url1'],
-                                        returnValue['url2'],
-                                        returnValue['url3']);
+                            return data.id == id
+                        });
 
-                            let name = returnValue['name'];
-                            let job = returnValue['job'];
-                            let num = returnValue['num'];
-                            let comment = returnValue['comment'];
-                            let url1 = returnValue['url1'];
-                            let url2 = returnValue['url2'];
-                            let url3 = returnValue['url3'];
+                        let name = returnValue['name'];
+                        let job = returnValue['job'];
+                        let num = returnValue['num'];
+                        let comment = returnValue['comment'];
+                        let url1 = returnValue['url1'];
+                        let url2 = returnValue['url2'];
+                        let url3 = returnValue['url3'];
 
 
-                            let name_html = `${name}`
-                                $('#name').append(name_html)
-                                let job_html = `${job}`
-                                $('#job').append(job_html)
-                                let comment_html = `${comment}`
-                                $('#comment').append(comment_html)
-                                // 팔로우수 팔로워수 추가해야함
-                                let num_html = `${num}`
-                                $('#num').append(num_html)
-                                let url1_html = `<a href="${url1}" class="url1">${url1}</a>`
-                                $('#url1').append(url1_html)
-                                let url2_html = `<a href="${url2}" class="url2">${url2}</a>`
-                                $('#url1').append(url2_html)
-                                let url3_html = `<a href="${url3}" class="url3">${url3}</a>`
-                                $('#url1').append(url3_html)
+                        let name_html = `${name}`
+                        $('#name').append(name_html)
+                        let job_html = `${job}`
+                        $('#job').append(job_html)
+                        let comment_html = `${comment}`
+                        $('#comment').append(comment_html)
+                        // 팔로우수 팔로워수 추가해야함
+                        let num_html = `${num}`
+                        $('#num').append(num_html)
+                        let url1_html = `<a href="${url1}" class="url1">${url1}</a>`
+                        $('#url1').append(url1_html)
+                        let url2_html = `<a href="${url2}" class="url2">${url2}</a>`
+                        $('#url1').append(url2_html)
+                        let url3_html = `<a href="${url3}" class="url3">${url3}</a>`
+                        $('#url1').append(url3_html)
 
+                        $('.btn').attr('id', id);
+
+                        for (i; i < follows.length; i++) {
+                            if (id == i) {
+                                $('#followingBtn > .follow').addClass('hide');
+                            } else {
+                                $('#followingBtn > .unfollow').removeClass('hide');
+                            }
+                        }
                     }
+
                 })
             }
     </script>

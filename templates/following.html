@@ -8,12 +8,17 @@
 
 <script>
     $(document).ready(function () {
-        gnbLinkActive()
+        $("#beforeLoginNab").addClass("hide");
+        $("#afterLoginNab").removeClass("hide");
+        gnbLinkActive();
+        followCheck2();
     })
 
     function gnbLinkActive() {
         $("a[href$='/myFollowing']").addClass('active')
     }
+
+
 </script>
 
 {% endblock %}

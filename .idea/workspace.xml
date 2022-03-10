@@ -5,11 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0755c8bb-ccf5-437b-8772-999cab5127b4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/nav.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/index2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/script/followCheck2.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/script/followCheck2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/script/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/script/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/script/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/script/logout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/script/profileEach.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/script/profileEach.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/following.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/following.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nav.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile_each.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile_each.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile_main.html" afterDir="false" />
     </list>
     <list id="dc95ed8f-25f2-4045-9d90-cadf04cb627a" name="Changes by jeong" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +74,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -74,16 +85,16 @@
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.profile_each.html">
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/connect.dev/templates/index.html" useBuiltInWebServerPort="true">
+    <configuration name="layout.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/connect.dev/templates/layout.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="login.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/connect.dev/templates/login.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="profile_each.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/connect.dev/templates/profile_each.html" useBuiltInWebServerPort="true">
+    <configuration name="nav.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/connect.dev/templates/nav.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="register.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/connect.dev/templates/register.html" useBuiltInWebServerPort="true">
+    <configuration name="profile_each.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/connect.dev/templates/profile_each.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="connect.dev" type="PythonConfigurationType" factoryName="Python">
@@ -127,9 +138,9 @@
       <list>
         <item itemvalue="Flask server.Flask (app.py)" />
         <item itemvalue="JavaScript Debug.profile_each.html" />
+        <item itemvalue="JavaScript Debug.layout.html" />
+        <item itemvalue="JavaScript Debug.nav.html" />
         <item itemvalue="JavaScript Debug.login.html" />
-        <item itemvalue="JavaScript Debug.register.html" />
-        <item itemvalue="JavaScript Debug.index.html" />
       </list>
     </recent_temporary>
   </component>
@@ -143,6 +154,8 @@
       <updated>1646887420133</updated>
       <workItem from="1646887423946" duration="858000" />
       <workItem from="1646909261549" duration="884000" />
+      <workItem from="1646914347518" duration="604000" />
+      <workItem from="1646918405317" duration="8239000" />
     </task>
     <servers />
   </component>
@@ -163,6 +176,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/connect_dev$connect_dev.coverage" NAME="connect.dev Coverage Results" MODIFIED="1646887431687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/connect_dev$Flask__app2_py_.coverage" NAME="Flask (app2.py) Coverage Results" MODIFIED="1646888161794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/connect_dev$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1646905705999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/connect_dev$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1646926623867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

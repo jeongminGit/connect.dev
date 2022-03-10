@@ -13,8 +13,25 @@ headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/
 # index.html
 @app.route('/test', methods=['GET'])
 def test_get():
-   user_list = list(db.users.find({},{'_id':False}))
-   return jsonify({'moons': user_list})
+    token_receive = request.cookies.get('mytoken')
+    try:
+        # token을 시크릿키로 디코딩합니다.
+        # 보실 수 있도록 payload를 print 해두었습니다. 우리가 로그인 시 넣은 그 payload와 같은 것이 나옵니다.
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        print(payload)
+
+        # payload 안에 id가 들어있습니다. 이 id로 유저정보를 찾습니다.
+        # 여기에선 그 예로 닉네임을 보내주겠습니다.
+        userinfo = db.users.find_one({'id': payload['id']}, {'_id': 0})
+        users = list(db.users.find({}, {'_id': False}))
+        user_list = list(db.users.find({},{'_id':False}))
+        print(user_list)
+        return jsonify({'result': 'success', 'id': userinfo['id'], 'profiling': users, 'moons': user_list})
+    except jwt.ExpiredSignatureError:
+        # 위를 실행했는데 만료시간이 지났으면 에러가 납니다.
+        return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})
+    except jwt.exceptions.DecodeError:
+        return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
 
 
 
@@ -51,7 +68,8 @@ def profile_upload():
 @app.route("/profile_main_up", methods=["GET"])
 def profile_up():
     users = list(db.users.find({}, {'_id': False}))
-    return jsonify({'profiling': users})
+    follows = list(db.follows.find({}, {'_id': False}))
+    return jsonify({'profiling': users, 'follows': follows})
 
 
 # 수정하기 창 출력
@@ -115,9 +133,28 @@ def followCheck():
 # 3 내가 팔로우한 유저 목록 카드로 붙여넣기
 @app.route('/followCheck2', methods=['GET'])
 def followCheck2():
-    recommendList = list(db.follows.find({}, {'_id': False}))
-    userList = list(db.users.find({}, {'_id': False}))
-    return jsonify({'recommendList': recommendList, 'userList': userList})
+    token_receive = request.cookies.get('mytoken')
+    try:
+        # token을 시크릿키로 디코딩합니다.
+        # 보실 수 있도록 payload를 print 해두었습니다. 우리가 로그인 시 넣은 그 payload와 같은 것이 나옵니다.
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        print(payload)
+
+        # payload 안에 id가 들어있습니다. 이 id로 유저정보를 찾습니다.
+        # 여기에선 그 예로 닉네임을 보내주겠습니다.
+        userinfo = db.users.find_one({'id': payload['id']}, {'_id': 0})
+        users = list(db.users.find({}, {'_id': False}))
+
+        recommendList = list(db.follows.find({}, {'_id': False}))
+        userList = list(db.users.find({}, {'_id': False}))
+
+        return jsonify({'result': 'success', 'id': userinfo['id'], 'profiling': users, 'recommendList': recommendList, 'userList': userList})
+    except jwt.ExpiredSignatureError:
+        # 위를 실행했는데 만료시간이 지났으면 에러가 납니다.
+        return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})
+    except jwt.exceptions.DecodeError:
+        return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
+
 
 # 4 내가 팔로우한 유저 숫자 가져오기
 @app.route('/followingNum', methods=['GET'])
@@ -176,6 +213,10 @@ import hashlib
 @app.route('/')
 def home():
    return render_template('index.html')
+
+@app.route('/in')
+def home2():
+   return render_template('index2.html')
 
 @app.route('/a')
 def a():
