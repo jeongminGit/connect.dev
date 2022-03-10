@@ -169,6 +169,10 @@ def login():
     return render_template('login.html', msg=msg)
 
 
+@app.route('/login1')
+def login1():
+    return render_template('login.html')
+
 @app.route('/register')
 def register():
     return render_template('register.html')
@@ -215,9 +219,6 @@ def api_register():
     }
 
     db.users.insert_one(doc)
-
-
-
     return jsonify({'result': 'success'})
 
 
