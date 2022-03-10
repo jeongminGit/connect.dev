@@ -233,20 +233,33 @@
                     url: '/profile_main',
                     data: {},
                     success: function (response) {
-                        let name,job,comment,num,url1,url2,url3;
+                        let id = response['id']
+                        // console.log(id)
+                        profile_up(id)
+                    }
+                })
+            }
+            function profile_up(id1) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/profile_main_up',
+                    data: {},
+                    success: function (response) {
+                        let id, name, job, comment, num, url1, url2, url3;
                         let row = response['profiling']
-                        // console.log(row)
-                        for (let i = 0; i < row.length; i++ ) {
-                            name = row[i]['name']
+                        console.log(row)
+                        for (let i = 0; i < row.length; i++) {
+                            id = row[i]['id']
                             // if문을 넣어서 id값으로 해당id의 정보만 출력하기
-                            if(name==$.cookie('mytoken', response['token'])) {
+                            if (id1 == id) {
+                                name = row[i]['name']
                                 job = row[i]['job']
                                 num = row[i]['num']
                                 comment = row[i]['comment']
                                 url1 = row[i]['url1']
                                 url2 = row[i]['url2']
                                 url3 = row[i]['url3']
-                                console.log(url2,url3)
+                                // console.log(url2, url3)
                                 // 이름입력
                                 let name_html = `${name}`
                                 $('#name').append(name_html)
@@ -264,11 +277,11 @@
                                 let url3_html = `<a href="${url3}" class="url3">${url3}</a>`
                                 $('#url1').append(url3_html)
                             }
-
                         }
                     }
                 })
             }
+
         </script>
     </head>
     <body>
