@@ -196,6 +196,7 @@ def a():
 
 @app.route('/profileEach')
 def profileEach():
+    msg = request.args.get("msg")
     return render_template('profile_each.html', id=request.args.get('id'))
 
 
