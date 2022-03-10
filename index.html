@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <title>connect.dev</title>
+
+    <style>
+        * {
+            font-family: 'Jua', sans-serif;
+        }
+
+        .main {
+            width: 100%;
+            height: 1000px;
+
+            background: #18191C;
+
+
+        }
+
+        .logo_connect_dev {
+            background-color: transparent;
+            position: static;
+            width: 109px;
+            height: 26px;
+            margin-left: 50px;
+            margin-top: 37px;
+
+            line-height: 145%;
+
+            text-align: center;
+
+            color: #FFFFFF;
+        }
+
+
+        nav {
+            float: right;
+        }
+
+        .col {
+            text-align: center;
+
+        }
+
+        .button1 {
+            border-radius: 40px;
+            color: purple;
+
+
+        }
+
+        /*카드 개별로 텍스트 정렬 후, 폰트와 블록 색깔을 바꿨으나 변하지 않음*/
+        /*카드 안의 내용 폰트, 색깔을 바꾸지 못했음*/
+
+        header {
+
+        }
+
+        .topbar a {
+            float: left;
+            text-align: center;
+            color: #f2f2f2;
+
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .num > button {
+            border-radius: 40px;
+        }
+
+        .col {
+
+        }
+
+        .mytitle {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+        }
+
+        .stack {
+            margin-right: 200px;
+        }
+
+        .stack > button {
+            float: right;
+            border-radius: 20px;
+            margin: 10px;
+            margin-top: 60px;
+
+
+        }
+
+        .mycards {
+            margin: 200px;
+
+
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+
+
+        }
+
+        .col {
+
+
+        }
+
+        .topbar > button {
+            background-color: black;
+            color: white;
+            margin-top: 10px;
+        }
+
+
+    </style>
+    <script>
+        function main() {
+        }
+
+        function login() {
+
+        }
+
+        function register() {
+
+        }
+
+        function react() {
+            $('#cards-box').empty()
+            $.ajax({
+                type: 'GET',
+                url: '/react',
+                data: {},
+                success: function (response) {
+                    let rows = response['moons']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let job = rows[i]['job']
+                        let comment = rows[i]['comment']
+                        let num = rows[i]['num']
+                        let temp_html = ''
+
+
+                        if (num == 'React') {
+                            temp_html = `            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="name">${name}</h5>
+                        <p class="job">${job}</p>
+                        <p class="mycommnt">${comment}</p>
+                        <div class="num">
+                            <button type="button" class="btn btn-secondary btn-lg" disabled>${num}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>`
+
+                        } else {
+
+
+                        }
+                        $('#cards-box').append(temp_html)
+                    }
+                }
+            });
+
+        }
+
+        function nodejs() {
+            $('#cards-box').empty()
+            $.ajax({
+                type: 'GET',
+                url: '/nodejs',
+                data: {},
+                success: function (response) {
+                    let rows = response['moons']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let job = rows[i]['job']
+                        let comment = rows[i]['comment']
+                        let num = rows[i]['num']
+                        let temp_html = ''
+
+
+                        if (num == 'Node.js') {
+                            temp_html = `            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="name">${name}</h5>
+                        <p class="job">${job}</p>
+                        <p class="mycommnt">${comment}</p>
+                        <div class="num">
+                            <button type="button" class="btn btn-secondary btn-lg" disabled>${num}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>`
+                        } else {
+
+
+                        }
+                        $('#cards-box').append(temp_html)
+                    }
+                }
+            });
+
+        }
+
+        function spring() {
+            $('#cards-box').empty()
+            $.ajax({
+                type: 'GET',
+                url: '/spring',
+                data: {},
+                success: function (response) {
+                    let rows = response['moons']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let job = rows[i]['job']
+                        let comment = rows[i]['comment']
+                        let num = rows[i]['num']
+                        let temp_html = ''
+
+                        if (num == 'Spring') {
+                            temp_html = `            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="name">${name}</h5>
+                        <p class="job">${job}</p>
+                        <p class="mycommnt">${comment}</p>
+                        <div class="num">
+                            <button type="button" class="btn btn-secondary btn-lg" disabled>${num}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>`
+                        } else {
+
+                        }
+                        $('#cards-box').append(temp_html)
+                    }
+                }
+            });
+
+        }
+
+        $(document).ready(function () {
+            listing();
+        });
+
+        function listing() {
+            $('#cards-box').empty()
+            $.ajax({
+                type: 'GET',
+                url: '/test',
+                data: {},
+                success: function (response) {
+                    let rows = response['moons']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let job = rows[i]['job']
+                        let comment = rows[i]['comment']
+                        let num = rows[i]['num']
+
+
+                        let temp_html = `            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="name">${name}</h5>
+                        <p class="job">${job}</p>
+                        <p class="mycommnt">${comment}</p>
+                        <div class="num">
+                            <button type="button" class="btn btn-secondary btn-lg" disabled>${num}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>`
+
+
+                        $('#cards-box').append(temp_html)
+                    }
+                }
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+<div class="main">
+    <button class="logo_connect_dev" onclick="main()">connect.dev</button>
+    <nav>
+        <div class="topbar">
+            <button onclick="login()">로그인</button>
+            <button onclick="register()">가입하기</button>
+        </div>
+    </nav>
+    <h1 class="mytitle">새로운 개발자 친구를 만나보세요!</h1>
+    <div class="stack">
+
+        <button class="button" onclick="react()">React</button>
+        <button class="button" onclick="nodejs()">Node.js</button>
+        <button class="button" onclick="spring()">Spring</button>
+        <button class="button" disabled>필터</button>
+
+    </div>
+    <div class="mycards">
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="cards-box">
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="name">${name}</h5>
+                        <p class="job">${job}</p>
+                        <p class="mycommnt">${comment}</p>
+                        <div class="num">
+                            <button type="button" class="btn btn-secondary btn-lg" disabled>${num}</button>
+                            <button type="button" class="btn btn-secondary btn-lg" disabled>${num}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+</body>
+</html>
