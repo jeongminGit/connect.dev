@@ -30,11 +30,12 @@
         <link rel="stylesheet" type="text/css" href="../static/style/register.css">
         <link rel="stylesheet" type="text/css" href="../static/style/profile_mk.css">
         <link rel="stylesheet" type="text/css" href="../static/style/profile_main.css">
-
+        <!--쿠키-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     </head>
     <body>
         <!--네비게이션-->
-        <nav id="beforeLoginNab" class="navbar navbar-expand-lg navbar-dark show">
+        <nav id="beforeLoginNab" class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
                     <svg width="109" height="40" viewBox="0 0 332 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -119,6 +120,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" id="logout" onclick="logout()">
+                                로그아웃
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <span class="nav-link" id="myID">snoopso</span>
                         </li>
                     </ul>
@@ -135,7 +141,7 @@
         <script type="text/javascript" src="../static/script/followCheck2.js"></script>
         <script type="text/javascript" src="../static/script/followingNum.js"></script>
         <script type="text/javascript" src="../static/script/followerNum.js"></script>
-        <script type="text/javascript" src="../static/script/follow.js"></script>
+{#        <script type="text/javascript" src="../static/script/follow.js"></script>#}
         <script type="text/javascript" src="../static/script/unfollow.js"></script>
         <script type="text/javascript" src="../static/script/profileEach.js"></script>
     </body>

@@ -1,18 +1,10 @@
 {% extends 'layout.html' %}
 {% block content %}
     <body>
-    <header>
-        <div class="links">
-            <a href="/profile" class="link_text">내 프로필</a>
-            <a href="/profile" class="link_text">팔로우 리스트</a>
-            <a href="/" class="link_text">로그아웃</a>
-        </div>
-        <a class="logo" href="/">Connect_dev</a>
-    </header>
     <main>
         <div class="container">
             <div class="introbox">
-                <button class="btn" onclick="location.href='/profile_revise'">수정하기</button>
+                <a href="#" class="btn btn-primary" onclick="follow(this.id)" id="${id}">팔로우</a>
                 <div class="name" id="name"></div>
                 <div class="job" id="job"></div>
                 <ul>
@@ -30,9 +22,100 @@
         </div>
     </main>
     <script>
-        $(document).ready(function () {
-            {#profileLoading();#}
+        $(document).ready(function() {
+            profile_upload();
+            profile_up();
         });
+
+            function profile_upload() {
+                function profile_upload() {
+                    $.ajax({
+                        type: 'GET',
+                        url: '/profile_main',
+                        data: {},
+                        success: function (response) {
+                            let id = response['id']
+                            // console.log(id)
+                            profile_up(id)
+                        }
+                    })
+                }
+
+
+            }
+            function follow(followingID) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/profile_main',
+                    data: {},
+                    success: function (response) {
+                        let row = response['profiling'];
+                        let myid = response['id'];
+                    }
+                })
+
+
+                {#$.ajax({#}
+                {#    type: "POST",#}
+                {#    url: "/follow",#}
+                {#    data: {#}
+                {#        myID: myid,#}
+                {#        followingID: followingID#}
+                {#    },#}
+                {#    success: function (response) {#}
+                {#        alert(response['msg']);#}
+                {#        $('#recommendsCard').remove()#}
+                {#        location.reload();#}
+                {#    }#}
+            }
+            function profile_up() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/profile_main_up',
+                    data: {},
+                    success: function (response) {
+                        const id="shinshin";
+                        let row = response['profiling']
+                        console.log(row)
+                        var returnValue = row.find(function (data) {
+                                return data.id == id
+                            });
+                            console.log(returnValue['name'],
+                                        returnValue['job'],
+                                        returnValue['num'],
+                                        returnValue['comment'],
+                                        returnValue['url1'],
+                                        returnValue['url2'],
+                                        returnValue['url3']);
+
+                            let name = returnValue['name'];
+                            let job = returnValue['job'];
+                            let num = returnValue['num'];
+                            let comment = returnValue['comment'];
+                            let url1 = returnValue['url1'];
+                            let url2 = returnValue['url2'];
+                            let url3 = returnValue['url3'];
+
+
+                            let name_html = `${name}`
+                                $('#name').append(name_html)
+                                let job_html = `${job}`
+                                $('#job').append(job_html)
+                                let comment_html = `${comment}`
+                                $('#comment').append(comment_html)
+                                // 팔로우수 팔로워수 추가해야함
+                                let num_html = `${num}`
+                                $('#num').append(num_html)
+                                let url1_html = `<a href="${url1}" class="url1">${url1}</a>`
+                                $('#url1').append(url1_html)
+                                let url2_html = `<a href="${url2}" class="url2">${url2}</a>`
+                                $('#url1').append(url2_html)
+                                let url3_html = `<a href="${url3}" class="url3">${url3}</a>`
+                                $('#url1').append(url3_html)
+
+                    }
+                })
+            }
     </script>
 
 {% endblock %}

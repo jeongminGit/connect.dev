@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // changeID();
-    followCheck();
+    // followCheck();
     followCheck2();
     followingNum();
     followerNum();

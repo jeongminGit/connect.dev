@@ -11,10 +11,6 @@ headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/
 
 
 # 문영안
-
-
-
-
 @app.route('/test', methods=['GET'])
 def test_get():
    user_list = list(db.users.find({},{'_id':False}))
@@ -42,15 +38,15 @@ def profile_upload():
         # payload 안에 id가 들어있습니다. 이 id로 유저정보를 찾습니다.
         # 여기에선 그 예로 닉네임을 보내주겠습니다.
         userinfo = db.users.find_one({'id': payload['id']}, {'_id': 0})
-        return jsonify({'result': 'success', 'id': userinfo['id']})
+        users = list(db.users.find({}, {'_id': False}))
+        return jsonify({'result': 'success', 'id': userinfo['id'], 'profiling': users})
     except jwt.ExpiredSignatureError:
         # 위를 실행했는데 만료시간이 지났으면 에러가 납니다.
         return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})
     except jwt.exceptions.DecodeError:
         return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
 
-    # profile = list(db.users.find({}, {'_id': False}))
-    return jsonify({'profiling': profile})
+
 
 @app.route("/profile_main_up", methods=["GET"])
 def profile_up():
