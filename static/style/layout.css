@@ -71,3 +71,7 @@ p {
     margin: 100px auto;
     padding: 0 24px;
 }
+
+.hide {
+    display: none;
+}

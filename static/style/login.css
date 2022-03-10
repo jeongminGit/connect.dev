@@ -1,0 +1,141 @@
+.main {
+    width: 100%;
+    height: 1000px;
+
+    background: #18191C;
+}
+
+.logo_connect_dev {
+    background-color: transparent;
+    position: static;
+    width: 109px;
+    height: 26px;
+    margin-left: 50px;
+    margin-top: 37px;
+
+    line-height: 145%;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+.register {
+    background-color: transparent;
+
+    margin-left: 60%;
+
+    text-align: center;
+
+    color: white;
+}
+
+.login {
+
+    text-align: center;
+    color: white;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.login_box {
+
+    position: static;
+    width: 690px;
+    height: 300px;
+    margin: auto;
+
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.id {
+    position: static;
+    width: 80px;
+    height: 16px;
+    margin: 20px 10%;
+
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #FFFFFF;
+
+}
+
+.id_box {
+    width: 80%;
+    height: 37px;
+    margin-left: 60px;
+    padding: 12px;
+
+    font-size: 11px;
+    line-height: 13px;
+
+    color: #FFFFFF;
+
+    opacity: 0.5;
+
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.pw {
+    position: static;
+    width: 80px;
+    height: 16px;
+    margin: 20px 10%;
+
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #FFFFFF;
+
+}
+
+.pw_box {
+    width: 80%;
+    height: 37px;
+    margin-left: 60px;
+    padding: 12px;
+
+    font-size: 11px;
+    line-height: 13px;
+
+    color: #FFFFFF;
+
+    opacity: 0.5;
+
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.login_btn {
+    width: 100px;
+    height: 37px;
+    margin-left: 75%;
+    padding: 12px;
+
+    font-size: 11px;
+    line-height: 13px;
+
+    color: white;
+
+    opacity: 0.5;
+
+    background: purple;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+    border-radius: 15px;
+
+}

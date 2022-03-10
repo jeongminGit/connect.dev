@@ -1,6 +1,6 @@
 
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 import certifi
 from pymongo import MongoClient
 app = Flask(__name__)
@@ -58,10 +58,6 @@ def profile_post():
 
     return jsonify({'msg':'저장완료!'})
 
-# 프로필 만들기 창 출력
-@app.route('/profile_mk')
-def profile_mk():
-    return render_template('profile_mk.html')
 
 # 수정하기 창 출력
 @app.route('/profile_revise')
@@ -160,6 +156,7 @@ def unfollow():
    db.follows.delete_one(unfollow)
    return jsonify({'result':'success', 'msg': '언팔로우했습니다.'})
 
+
 # 배정민
 
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
@@ -180,8 +177,8 @@ import hashlib
 #################################
 ##  HTML을 주는 부분             ##
 #################################
-@app.route('/')
-def home():
+@app.route('/a')
+def a():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
@@ -223,7 +220,7 @@ def api_register():
 
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
-    db.users.insert_one({'id': id_receive, 'pw': pw_hash})
+    db.login.insert_one({'id': id_receive, 'pw': pw_hash})
 
     return jsonify({'result': 'success'})
 
