@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0755c8bb-ccf5-437b-8772-999cab5127b4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/nav.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/script/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/script/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/profile_each.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile_each.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/profile_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile_main.html" afterDir="false" />
     </list>
-    <list id="dc95ed8f-25f2-4045-9d90-cadf04cb627a" name="Changes by jeong" comment="">
-      <change beforePath="$PROJECT_DIR$/static/script/afterlogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/script/afterlogin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-    </list>
+    <list id="dc95ed8f-25f2-4045-9d90-cadf04cb627a" name="Changes by jeong" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +23,7 @@
         <option value="Python Script" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -53,14 +49,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/templates/login.html">
-      <ranges>
-        <range start1="26" end1="28" start2="26" end2="29" changelist="0755c8bb-ccf5-437b-8772-999cab5127b4" />
-        <range start1="33" end1="33" start2="34" end2="36" changelist="dc95ed8f-25f2-4045-9d90-cadf04cb627a" />
-      </ranges>
-    </file>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -71,6 +59,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -153,6 +142,7 @@
       <option name="presentableId" value="Default" />
       <updated>1646887420133</updated>
       <workItem from="1646887423946" duration="858000" />
+      <workItem from="1646909261549" duration="884000" />
     </task>
     <servers />
   </component>
