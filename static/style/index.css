@@ -117,3 +117,7 @@ header {
     color: white;
     margin-top: 10px;
 }
+
+.cardBtn {
+    cursor: pointer;
+}

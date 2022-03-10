@@ -171,8 +171,10 @@
                     url3_give: url3
                 },
                 success: function () {
-                    alert("회원가입을 축하드립니다!")
-                    window.location.replace("/login1")
+                    alert("회원가입을 축하드립니다!");
+                    window.location.replace("/");
+                    $('#beforeLoginNab').addClass('hide');
+                    $('#afterLoginNab').removeClass('hide');
                 }
             })
         } else {

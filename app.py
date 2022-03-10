@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import certifi
 from pymongo import MongoClient
-app = Flask(__name__)
 
 ca = certifi.where()
 client = MongoClient("mongodb+srv://connect_dev:ukdzr1Y72Jilh3N0@cluster0.tgb50.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", tlsCAFile=ca)
 db = client.connect_dev
+app = Flask(__name__)
+headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+
 
 
 # 문영안
@@ -14,10 +16,14 @@ db = client.connect_dev
 def home():
    return render_template('index.html')
 
+
+
 @app.route('/test', methods=['GET'])
 def test_get():
    user_list = list(db.users.find({},{'_id':False}))
    return jsonify({'moons': user_list})
+
+
 
 # 신상렬
 
@@ -162,6 +168,10 @@ def a():
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
+@app.route('/profileEach')
+def profileEach():
+    return render_template('profile_each.html', id=request.args.get('id'))
+
 
 @app.route('/login')
 def login():
@@ -178,9 +188,9 @@ def register():
     return render_template('register.html')
 
 
-@app.route('/profile')
-def profile():
-    return render_template('profile.html')
+# @app.route('/profile')
+# def profile():
+#     return render_template('profile.html')
 
 
 #################################
@@ -294,4 +304,4 @@ def api_valid():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run('0.0.0.0', port=5000, debug=True)

@@ -2,37 +2,33 @@
 {% block content %}
 
 <div class="main">
-    <button class="logo_connect_dev" onclick="main()">connect.dev</button>
-    <nav>
-        <div class="topbar">
-            <button onclick="login()">로그인</button>
-            <button onclick="register()">가입하기</button>
-        </div>
-    </nav>
+{#    <nav>#}
+{#        <div class="topbar">#}
+{#            <button onclick="login()">로그인</button>#}
+{#            <button onclick="register()">가입하기</button>#}
+{#        </div>#}
+{#    </nav>#}
     <h1 class="mytitle">새로운 개발자 친구를 만나보세요!</h1>
-    <div class="stack">
-        <button type="button" class="btn btn-secondary btn-lg" disabled>Sping</button>
-        <button type="button" class="btn btn-secondary btn-lg" disabled>Node.js</button>
-        <button type="button" class="btn btn-secondary btn-lg" disabled>React</button>
-    </div>
+{#    <div class="stack">#}
+{#        <button type="button" class="btn btn-secondary btn-lg" disabled>Sping</button>#}
+{#        <button type="button" class="btn btn-secondary btn-lg" disabled>Node.js</button>#}
+{#        <button type="button" class="btn btn-secondary btn-lg" disabled>React</button>#}
+{#    </div>#}
     <div class="mycards">
         <div class="row row-cols-1 row-cols-md-3 g-4" id="cards-box">
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="name">${name}</h5>
-                        <p class="job">${job}</p>
-                        <p class="mycommnt">${comment}</p>
-                        <div class="num">
-                            <button type="button" class="btn btn-secondary btn-lg" disabled>${num}</button>
-                            <button type="button" class="btn btn-secondary btn-lg" disabled>${num}</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
+{#            <div class="col">#}
+{#                <div class="card h-100">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="name">${name}</h5>#}
+{#                        <p class="job">${job}</p>#}
+{#                        <p class="mycommnt">${comment}</p>#}
+{#                        <div class="num">#}
+{#                            <button type="button" class="test" disabled>${num}</button>#}
+{#                            <button type="button" class="test" disabled>${num}</button>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
         </div>
     </div>
     <!--민경-->
@@ -41,20 +37,11 @@
 </div>
 
 <script>
-        function main() {
-        }
-
-        function login() {
-
-        }
-
-        function register() {
-
-        }
-
         $(document).ready(function () {
             listing();
         });
+
+
 
         function listing() {
             $('#cards-box').empty()
@@ -69,21 +56,24 @@
                         let job = rows[i]['job']
                         let comment = rows[i]['comment']
                         let num = rows[i]['num']
+                        let id = rows[i]['id']
+                        console.log(id)
+
+                        let temp_html = `<div class="col">
+                                            <a class="card h-100 cardBtn" onclick="profileEach(this.id)" id="${id}">
+                                                <div class="card-body">
+                                                    <h5 class="name">${name}</h5>
+                                                    <p class="job">${job}</p>
+                                                    <p class="mycommnt">${comment}</p>
+                                                    <div class="num">
+                                                        <button type="button" class="test">${num}</button>
+                                                    </div>
+
+                                                </div>
+                                            </a>
+                                        </div>`
 
 
-                        let temp_html = `            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="name">${name}</h5>
-                        <p class="job">${job}</p>
-                        <p class="mycommnt">${comment}</p>
-                        <div class="num">
-                            <button type="button" class="btn btn-secondary btn-lg" disabled>${num}</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>`
 
 
                         $('#cards-box').append(temp_html)

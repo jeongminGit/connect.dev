@@ -4,4 +4,5 @@ $(document).ready(function () {
     followCheck2();
     followingNum();
     followerNum();
+    profileLoading();
 })
