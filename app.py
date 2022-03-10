@@ -12,8 +12,8 @@ db = client.connect_dev
 
 # 문영안
 
-@app.route('/')
-def home():
+@app.route('/a')
+def aaaa():
    return render_template('index.html')
 
 @app.route('/test', methods=['GET'])
@@ -33,31 +33,6 @@ def profile_main():
 def profile_upload():
     profile = list(db.users.find({}, {'_id': False}))
     return jsonify({'profiling': profile})
-
-# 프로필 만들기 창에서 프로필 정보를 DB에 저장
-@app.route('/profile_mk_post', methods=["POST"])
-def profile_post():
-    url1_receive = request.form['url1_give']
-    url2_receive = request.form['url2_give']
-    url3_receive = request.form['url3_give']
-    name_receive = request.form['name_give']
-    job_receive = request.form['job_give']
-    comment_receive = request.form['comment_give']
-    num_receive = request.form['num_give']
-
-    doc = {
-        'name': name_receive,
-        'job': job_receive,
-        'comment': comment_receive,
-        'num': num_receive,
-        'url1': url1_receive,
-        'url2': url2_receive,
-        'url3': url3_receive,
-    }
-    db.users.insert_one(doc)
-
-    return jsonify({'msg':'저장완료!'})
-
 
 # 수정하기 창 출력
 @app.route('/profile_revise')
@@ -217,10 +192,33 @@ def profile():
 def api_register():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
+    url1_receive = request.form['url1_give']
+    url2_receive = request.form['url2_give']
+    url3_receive = request.form['url3_give']
+    name_receive = request.form['name_give']
+    job_receive = request.form['job_give']
+    comment_receive = request.form['comment_give']
+    num_receive = request.form['num_give']
 
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
-    db.login.insert_one({'id': id_receive, 'pw': pw_hash})
+
+    doc = {
+        'id': id_receive,
+        'pw': pw_hash,
+        'name': name_receive,
+        'job': job_receive,
+        'comment': comment_receive,
+        'num': num_receive,
+        'url1': url1_receive,
+        'url2': url2_receive,
+        'url3': url3_receive,
+
+    }
+
+    db.users.insert_one(doc)
+
+
 
     return jsonify({'result': 'success'})
 
