@@ -1,5 +1,7 @@
 $(document).ready(function () {
-    const followingList = [];
-    changeID();
+    // changeID();
     followCheck();
+    followCheck2();
+    followingNum();
+    followerNum();
 })

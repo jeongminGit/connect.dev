@@ -46,12 +46,11 @@ function followCheck() {
                                           <div class="card-body">
                                               <h5 class="card-title" id="recommendUserID">${returnValue['id']}</h5>
                                               <p class="card-text">${returnValue['name']}</p>
-                                              <a href="#" class="btn btn-primary" onclick="follow()">팔로우</a>
+                                              <a href="#" class="btn btn-primary" onclick="follow(this.id)" id="${returnValue['id']}">팔로우</a>
                                           </div>
                                       </div>
                                   </div>`;
                     $('#listRecommends').append(temp_html);
-
             }
         }
     })

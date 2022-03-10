@@ -4,7 +4,8 @@ function changeID() {
         url: "/myID",
         data: {},
         success: function (response) {
-            let myID = response['myID'][0]['id']
+            let myID = response['myID'][0]['id'];
+            console.log(myID);
             $( "#myID" ).text(myID)
         }
     })

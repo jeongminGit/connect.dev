@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="index-box">
+    <div class="row" id="listFollowings">
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        gnbLinkActive()
+    })
+
+    function gnbLinkActive() {
+        $("a[href$='/myFollowing']").addClass('active')
+    }
+</script>
+
+{% endblock %}
