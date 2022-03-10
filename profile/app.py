@@ -8,9 +8,9 @@ import certifi
 ca = certifi.where()
 
 client = MongoClient('mongodb+srv://connect_dev:ukdzr1Y72Jilh3N0@cluster0.tgb50.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',tlsCAFile=ca)
-db = client.ssr
+db = client.connect_dev
 
-
+# 문영안
 @app.route('/')
 def profile_main():
     return render_template('profile_main.html')

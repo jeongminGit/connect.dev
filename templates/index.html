@@ -1,0 +1,97 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="main">
+    <button class="logo_connect_dev" onclick="main()">connect.dev</button>
+    <nav>
+        <div class="topbar">
+            <button onclick="login()">로그인</button>
+            <button onclick="register()">가입하기</button>
+        </div>
+    </nav>
+    <h1 class="mytitle">새로운 개발자 친구를 만나보세요!</h1>
+    <div class="stack">
+        <button type="button" class="btn btn-secondary btn-lg" disabled>Sping</button>
+        <button type="button" class="btn btn-secondary btn-lg" disabled>Node.js</button>
+        <button type="button" class="btn btn-secondary btn-lg" disabled>React</button>
+    </div>
+    <div class="mycards">
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="cards-box">
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="name">${name}</h5>
+                        <p class="job">${job}</p>
+                        <p class="mycommnt">${comment}</p>
+                        <div class="num">
+                            <button type="button" class="btn btn-secondary btn-lg" disabled>${num}</button>
+                            <button type="button" class="btn btn-secondary btn-lg" disabled>${num}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!--민경-->
+    <div class="row" id="listRecommends">
+    </div>
+</div>
+
+<script>
+        function main() {
+        }
+
+        function login() {
+
+        }
+
+        function register() {
+
+        }
+
+        $(document).ready(function () {
+            listing();
+        });
+
+        function listing() {
+            $('#cards-box').empty()
+            $.ajax({
+                type: 'GET',
+                url: '/test',
+                data: {},
+                success: function (response) {
+                    let rows = response['moons']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let job = rows[i]['job']
+                        let comment = rows[i]['comment']
+                        let num = rows[i]['num']
+
+
+                        let temp_html = `            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="name">${name}</h5>
+                        <p class="job">${job}</p>
+                        <p class="mycommnt">${comment}</p>
+                        <div class="num">
+                            <button type="button" class="btn btn-secondary btn-lg" disabled>${num}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>`
+
+
+                        $('#cards-box').append(temp_html)
+                    }
+                }
+            });
+        }
+
+    </script>
+
+{% endblock %}
