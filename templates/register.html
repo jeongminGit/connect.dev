@@ -18,9 +18,6 @@
         <input class="pw_checkbox" id="userpw2" type="password" placeholder="비밀번호 재확인">
         <p id="help_pw2" class="help_pw2">비밀번호를 다시 한 번 입력해주세요.</p>
         <p id="help_pw2_alert" class="help_pw2_alert"></p>
-        <h1>
-            <button class="register_btn" onclick="register()">가입</button>
-        </h1>
     </div>
 </div>
 <script>
@@ -80,59 +77,6 @@
             }
         });
     }
-
-    // 아이디 가입하기
-    function register() {
-        let userid = $("#userid").val()
-        let userpw = $("#userpw").val()
-        let userpw2 = $("#userpw2").val()
-        console.log(userid, userpw, userpw2)
-
-        if (userpw == "") {
-            $("#help_pw_alert").text("비밀번호를 입력해주세요.")
-            $("#userpw").focus()
-            return;
-        } else if (!is_pw(userpw)) {
-            $("#help_pw_alert").text("비밀번호의 형식을 확인해주세요. 영문과 숫자 필수 포함, 특수문자(!@#$%^&*) 사용가능 8-20자")
-            $("#userpw").focus()
-            return
-        } else {
-            $("#help_pw_alert").text("사용할 수 있는 비밀번호입니다.")
-        }
-        if (userpw2 == "") {
-            $("#help_pw2_alert").text("비밀번호를 입력해주세요.")
-            $("#userpw2").focus()
-            return;
-        } else if (userpw2 != userpw) {
-            $("#help_pw2_alert").text("비밀번호가 일치하지 않습니다.")
-            $("#userpw2").focus()
-            return;
-        } else {
-            $("#userpw2").text("비밀번호가 일치합니다.")
-        }
-        if ($("#help_id_alert").hide()) {
-            $.ajax({
-                type: "POST",
-                url: "/api/register",
-                data: {
-                    id_give: userid,
-                    pw_give: userpw
-                },
-                success: function () {
-                    alert("회원가입을 축하드립니다!")
-                    window.location.replace("/profile")
-                }
-            })
-            return;
-        } else {
-            alert("아이디를 다시 확인해주세요.")
-            return
-        }
-        ;
-
-    }
-
-
 </script>
 
 <!--프로필 만들기 파트-->
@@ -178,31 +122,66 @@
     }
 
     function complete() {
+        let userid = $("#userid").val()
+        let userpw = $("#userpw").val()
+        let userpw2 = $("#userpw2").val()
         let name = $('#name').val()
         let job = $('#job').val()
         let comment = $('#comment').val()
         let url1 = $('#url1').val()
         let url2 = $('#url2').val()
         let url3 = $('#url3').val()
-        console.log(num, name, job, comment, url1, url2, url3)
+        console.log(userid, userpw, userpw2)
 
-        $.ajax({
-            type: 'POST',
-            url: '/profile_mk_post',
-            data: {
-                num_give: num,
-                name_give: name,
-                job_give: job,
-                comment_give: comment,
-                url1_give: url1,
-                url2_give: url2,
-                url3_give: url3
-            },
-            success: function (response) {
-                alert(response['msg'])
-                location.href = "/profile"
-            }
-        });
+        if (userpw == "") {
+            $("#help_pw_alert").text("비밀번호를 입력해주세요.")
+            $("#userpw").focus()
+            return;
+        } else if (!is_pw(userpw)) {
+            $("#help_pw_alert").text("비밀번호의 형식을 확인해주세요. 영문과 숫자 필수 포함, 특수문자(!@#$%^&*) 사용가능 8-20자")
+            $("#userpw").focus()
+            return
+        } else {
+            $("#help_pw_alert").text("사용할 수 있는 비밀번호입니다.")
+        }
+        if (userpw2 == "") {
+            $("#help_pw2_alert").text("비밀번호를 입력해주세요.")
+            $("#userpw2").focus()
+            return;
+        } else if (userpw2 != userpw) {
+            $("#help_pw2_alert").text("비밀번호가 일치하지 않습니다.")
+            $("#userpw2").focus()
+            return;
+        } else {
+            $("#userpw2").text("비밀번호가 일치합니다.")
+        }
+        if ($("#help_id_alert").hide()) {
+            $.ajax({
+                type: "POST",
+                url: "/api/register",
+                data: {
+                    id_give: userid,
+                    pw_give: userpw,
+                    num_give: num,
+                    name_give: name,
+                    job_give: job,
+                    comment_give: comment,
+                    url1_give: url1,
+                    url2_give: url2,
+                    url3_give: url3
+                },
+                success: function () {
+                    alert("회원가입을 축하드립니다!")
+                    window.location.href("/login")
+                }
+            })
+            return;
+        } else {
+            alert("아이디를 다시 확인해주세요.")
+            return
+        }
+
+        console.log(num, name, job, comment, url1, url2, url3)
     }
 </script>
 
