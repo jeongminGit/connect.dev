@@ -12,9 +12,6 @@ headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/
 
 # 문영안
 
-@app.route('/')
-def home():
-   return render_template('index.html')
 
 
 
@@ -156,17 +153,26 @@ import hashlib
 #################################
 ##  HTML을 주는 부분             ##
 #################################
+
+@app.route('/')
+
+
+@app.route('/')
+def home():
+   return render_template('index.html')
+
 @app.route('/a')
 def a():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.users.find_one({"id": payload['id']})
-        return render_template('login.html', nickname=user_info["id"])
+        return render_template('index.html', nickname=user_info["id"])
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="환영합니다."))
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
+
 
 @app.route('/profileEach')
 def profileEach():
