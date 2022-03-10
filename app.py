@@ -32,8 +32,30 @@ def profile_main():
 # 메인 프로필 화면에 DB정보 출력
 @app.route("/profile_main", methods=["GET"])
 def profile_upload():
-    profile = list(db.users.find({}, {'_id': False}))
+    token_receive = request.cookies.get('mytoken')
+    try:
+        # token을 시크릿키로 디코딩합니다.
+        # 보실 수 있도록 payload를 print 해두었습니다. 우리가 로그인 시 넣은 그 payload와 같은 것이 나옵니다.
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        print(payload)
+
+        # payload 안에 id가 들어있습니다. 이 id로 유저정보를 찾습니다.
+        # 여기에선 그 예로 닉네임을 보내주겠습니다.
+        userinfo = db.users.find_one({'id': payload['id']}, {'_id': 0})
+        return jsonify({'result': 'success', 'id': userinfo['id']})
+    except jwt.ExpiredSignatureError:
+        # 위를 실행했는데 만료시간이 지났으면 에러가 납니다.
+        return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})
+    except jwt.exceptions.DecodeError:
+        return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
+
+    # profile = list(db.users.find({}, {'_id': False}))
     return jsonify({'profiling': profile})
+
+@app.route("/profile_main_up", methods=["GET"])
+def profile_up():
+    users = list(db.users.find({}, {'_id': False}))
+    return jsonify({'profiling': users})
 
 # 수정하기 창 출력
 @app.route('/profile_revise')
@@ -155,9 +177,6 @@ import hashlib
 #################################
 
 @app.route('/')
-
-
-@app.route('/')
 def home():
    return render_template('index.html')
 
@@ -179,14 +198,13 @@ def profileEach():
     return render_template('profile_each.html', id=request.args.get('id'))
 
 
-@app.route('/login')
-def login():
-    msg = request.args.get("msg")
-    return render_template('login.html', msg=msg)
-
+# @app.route('/login')
+# def login():
+#     msg = request.args.get("msg")
+#     return render_template('login.html', msg=msg)
 
 @app.route('/login1')
-def login1():
+def login():
     return render_template('login.html')
 
 @app.route('/register')
@@ -284,28 +302,7 @@ def check_dup():
 # 유효한 토큰을 줘야 올바른 결과를 얻어갈 수 있습니다.
 # (그렇지 않으면 남의 장바구니라든가, 정보를 누구나 볼 수 있겠죠?)
 
-@app.route('/api/nick', methods=['GET'])
-def api_valid():
-    token_receive = request.cookies.get('mytoken')
 
-    # try / catch 문?
-    # try 아래를 실행했다가, 에러가 있으면 except 구분으로 가란 얘기입니다.
-
-    try:
-        # token을 시크릿키로 디코딩합니다.
-        # 보실 수 있도록 payload를 print 해두었습니다. 우리가 로그인 시 넣은 그 payload와 같은 것이 나옵니다.
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        print(payload)
-
-        # payload 안에 id가 들어있습니다. 이 id로 유저정보를 찾습니다.
-        # 여기에선 그 예로 닉네임을 보내주겠습니다.
-        userinfo = db.users.find_one({'id': payload['id']}, {'_id': 0})
-        return jsonify({'result': 'success', 'nickname': userinfo['nick']})
-    except jwt.ExpiredSignatureError:
-        # 위를 실행했는데 만료시간이 지났으면 에러가 납니다.
-        return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})
-    except jwt.exceptions.DecodeError:
-        return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
 
 
 
